@@ -1,0 +1,62 @@
+root@b19f116509eb:/home/workspace/CarND-PID-Control-Project/build# make
+Scanning dependencies of target pid
+[ 25%] Building CXX object CMakeFiles/pid.dir/src/twiddle.cpp.o
+[ 50%] Linking CXX executable pid
+[100%] Built target pid
+root@b19f116509eb:/home/workspace/CarND-PID-Control-Project/build# ./pid 
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Listening to port 4567
+Connected!!!
+Best Error = 1.79769e+308 cte = 0.432293 i = 0 Sum dp = 0.1301
+Kp = 0.13 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.195569 i = 0 Sum dp = 0.1301
+Kp = 0.07 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.887332 i = 0 Sum dp = 0.1301
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1 Ki = 0.0011 Kd = 1.5
+Best Error = 0.186878 cte = 0.599604 i = 1 Sum dp = 0.1271
+Kp = 0.1 Ki = 0.0009 Kd = 1.5
+Best Error = 0.186878 cte = 0.64841 i = 1 Sum dp = 0.1271
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1 Ki = 0.001 Kd = 1.6
+Best Error = 0.186878 cte = 0.607422 i = 2 Sum dp = 0.12709
+Kp = 0.1 Ki = 0.001 Kd = 1.4
+Best Error = 0.186878 cte = 0.432112 i = 2 Sum dp = 0.12709
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.127 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.227806 i = 0 Sum dp = 0.11709
+Kp = 0.073 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.734794 i = 0 Sum dp = 0.11709
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1 Ki = 0.00109 Kd = 1.5
+Best Error = 0.186878 cte = 0.5892 i = 1 Sum dp = 0.11439
+Kp = 0.1 Ki = 0.00091 Kd = 1.5
+Best Error = 0.186878 cte = 0.649376 i = 1 Sum dp = 0.11439
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1 Ki = 0.001 Kd = 1.59
+Best Error = 0.186878 cte = 0.614531 i = 2 Sum dp = 0.114381
+Kp = 0.1 Ki = 0.001 Kd = 1.41
+Best Error = 0.186878 cte = 0.451419 i = 2 Sum dp = 0.114381
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1243 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.243287 i = 0 Sum dp = 0.105381
+Kp = 0.0757 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.631847 i = 0 Sum dp = 0.105381
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1 Ki = 0.001081 Kd = 1.5
+Best Error = 0.186878 cte = 0.592543 i = 1 Sum dp = 0.102951
+Kp = 0.1 Ki = 0.000919 Kd = 1.5
+Best Error = 0.186878 cte = 0.62906 i = 1 Sum dp = 0.102951
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Kp = 0.1 Ki = 0.001 Kd = 1.581
+Best Error = 0.186878 cte = 0.630762 i = 2 Sum dp = 0.102943
+Kp = 0.1 Ki = 0.001 Kd = 1.419
+Best Error = 0.186878 cte = 0.565742 i = 2 Sum dp = 0.102943
+Kp = 0.1 Ki = 0.001 Kd = 1.5
+Best Error = 0.186878 cte = 0.263221 i = 0 Sum dp = 0.0948429
+-------------DONE-----------
+Best Error = 0.186878 cte = 0.494883 i = 0 Sum dp = 0.0948429
+-------------DONE-----------
+Best Error = 0.186878 cte = 0.575136 i = 0 Sum dp = 0.0948429
+-------------DONE-----------
+Best Error = 0.186878 cte = 0.575362 i = 0 Sum dp = 0.0948429

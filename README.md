@@ -1,3 +1,97 @@
+## Overview
+Goal of this project is to build a PID controller to steer the car in a simulator. Simulator provides cte (Cross track error) to our program periodically and our program is expected to send steering angle to simulator to keep the car on road.
+
+PID stands for Proportional(P) Integral(I) Derivative(D). A PID controller combines these three components to produce a control signal. In our case, this control signal is steering angle. 
+
+Control Signal = Kp * cte + Ki * sum of errors + Kd * diff_error
+
+### Proportional Component (P)
+Proportional component outputs steering angle proportional to the Cross Track error. Gain constant is Kp.
+
+P = Kp x CTE
+
+If we use P component alone, the vehicle will oscillate around its intended trajectory. Increasing Kp will cause it to steer more aggressively towards the target lane. But it will also cause the car to oscillate more.
+
+### Derivative Component (D)
+Derivative component outputs a steering angle proportional to the difference in error. This acts against P components tendency to oscillate since it tries to pull away from target as the error decreases.
+
+D = Kd x diff_cte
+
+Where diff_cte = cte - cte_prev
+
+### Integral Component (I)
+Integral component outputs a steering angle proportional to the sum of errors (accumulated error). This helps to compensate "Systemic Bias".
+
+I = Ki x Sum_of_errors
+
+
+## Reflection
+
+There are two main steps in implementing this project.
+
+1. Implement PID controller.
+2. Fine tune the gains of PID controller.
+
+First part (Implement PID controller) is pretty straight forward and is implemented in PID.cpp and PID.h. 
+
+Second part is slightly more challenging. Based on various discussions from Knowledge (https://knowledge.udacity.com/?nanodegree=nd013&page=1&project=289&rubric=1972) page, I have decided to start this with manual trial and error and then once a reasonably good parameters are found, use Twiddle to fine tune the parameters further.
+
+### Manual Trail and Error
+Started with setting all the parameters Kp, Ki and Kd to zero. This resulted in car driving straight irrespective of the error and quickly went outside the road and crashed. Next Kp value was set to 1, then car started move along the road but was oscillating. Also noticed that when Kp value was reduced, oscillation also reduced. 
+
+Next step was to adjust the derivative gain (Kd). Adjusted the Kd such that oscillation has reduced to reasonable level and car was able stay on track for one entire lap. 
+
+Next step was to adjust gain of Integral component (Ki). Purpose of this component is to compensate for Systemic Bias. It looked like higher values of Ki was causing the car to overshoot and oscillate more. A very small value of 0.0001 was set in the end. 
+
+Manual Trial and Error output,
+
+Kp = 0.1
+Ki = 0.001
+Kd = 1.5
+
+
+### Twiddle
+Twiddle was implemented to fine tune the parameters (Kp, Ki, Kd). This is implemented in twiddle.cpp and twiddle.h. Basic idea of the twiddle is to adjust (increase or decrease) one parameter at a time and see if it helps to improve the error. Even though twiddle is not very complex to implement as a standalone program, integrating with the simulator application was not very straight forward. Twiddle algorithm implemented in the class lesson adjusts parameter (p) and then invokes a run() function that returns the cte and based on the current cte, it would do the next step. To fit the twiddle algorithm in to our application, it was organized as a state machine with following state.
+
+* START : First state
+* SEARCH_UP : Searching for optimal p[i] by incrementing it by dp[i]
+* SEARCH_DOWN : Searching for optimal p[i] by decrementing it by dp[i]
+* DONE : Completed. sum(dp) < threshold
+
+State Diagram is in src/state.png
+
+![alt text](src/state.png)
+
+
+Twiddle mode can be enabled in main.cpp by setting twiddleMode to true. When twiddle is enabled, twiddle algorithm is activated and adjusts the p until sum(dp) < threshold. Data is collected while twiddle was running and is captured in src/data.txt. This shows how the algorithm adjusts the parameters.
+
+When twiddleMode set to false, main.cpp uses just PID class to steer the car.
+
+It turns out that in the twiddle came up with the exact same parameters that we started with (output of manual trial and error step).
+
+Kp = 0.1
+Ki = 0.001
+Kd = 1.5
+
+This could be due to,
+
+1. It just so happened that the manual setting was too good.
+
+OR
+
+2. There is some subtle bug in the twiddle implementation that I am not able to see.
+
+
+## Conclusion
+With the above mentioned parameters, I was able to run the car without going out of the road on simulator. I have not implemented the throttle/speed control and can be done using similar approach.
+
+
+
+***Below description is provided by Udacity***
+#
+
+
+
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
