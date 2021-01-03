@@ -60,7 +60,7 @@ Twiddle was implemented to fine tune the parameters (Kp, Ki, Kd). This is implem
 
 State Diagram is in src/state.png
 
-![alt text](src/state.png)
+![alt text](src/State.png)
 
 
 Twiddle mode can be enabled in main.cpp by setting twiddleMode to true. When twiddle is enabled, twiddle algorithm is activated and adjusts the p until sum(dp) < threshold. Data is collected while twiddle was running and is captured in src/data.txt. This shows how the algorithm adjusts the parameters.
